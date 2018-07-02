@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name             = "SalesIQSDK"
-s.version          = "0.0.1"
+s.version          = "1.0"
 s.summary          = "A framework is tohave livechat for iOS app"
 s.license          = { :type => "MIT", :text=> <<-LICENSE
 MIT License
@@ -27,10 +27,5 @@ s.author           = { "Zoho salesiq mobile" => "salesiq@zohocorp.com" }
 s.source           = { :git => "https://github.com/madhupalem/SalesIQSDK.git", :tag => s.version }
 s.platform         = :ios, '9.0'
 s.requires_arc     = true
-s.source_files     = "SalesIQ iOS SDk/**/*.{swift}"
-s.public_header_files = "SalesIQ iOS SDk/**/*.h"
-s.preserve_paths   = "SalesIQ iOS SDk/Mobilisten.framework"
-s.vendored_frameworks = "SalesIQ iOS SDk/Mobilisten.framework"
-s.frameworks       = 'UIKit','Foundation','SystemConfiguration'
 
 end
