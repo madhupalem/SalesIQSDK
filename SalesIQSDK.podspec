@@ -27,5 +27,6 @@ s.author           = { "Zoho salesiq mobile" => "salesiq@zohocorp.com" }
 s.source           = { :git => "https://github.com/madhupalem/SalesIQSDK.git", :tag => s.version }
 s.platform         = :ios, '9.0'
 s.requires_arc     = true
-
+s.source_files     = "*.{swift}"
+s.public_header_files = "*.h"
 end
