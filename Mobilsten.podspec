@@ -1,7 +1,10 @@
 Pod::Spec.new do |s|
-s.name             = "SalesIQSDK"
-s.version          = "1.0"
-s.summary          = "A framework is tohave livechat for iOS app"
+s.name              = 'Mobilsten'
+s.version           = '1.0.0'
+s.summary           = 'A really cool SDK that logs stuff.'
+s.homepage          = 'https://www.zoho.com/'
+
+s.author            = { 'Name' => 'madhu@zoho.com' }
 s.license          = { :type => "MIT", :text=> <<-LICENSE
 MIT License
 Copyright (c) 2017 Zoho
@@ -22,11 +25,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE
 LICENSE
 }
-s.homepage         = "https://www.zoho.com/salesiq"
-s.author           = { "Zoho salesiq mobile" => "salesiq@zohocorp.com" }
-s.source           = { :git => "https://github.com/madhupalem/SalesIQSDK.git", :tag => s.version }
-s.platform         = :ios, '9.0'
-s.requires_arc     = true
-s.source_files     = "native/**/*.{swift}"
-s.public_header_files = "native/**/*.h"
+
+s.platform          = :ios
+s.source            = { :http => 'https://www.zoho.com/salesiq/downloads/plugins/Mobilisten.zip' }
+
+s.ios.deployment_target = '9.0'
+s.ios.vendored_frameworks = 'Mobilsten.framework'
 end
