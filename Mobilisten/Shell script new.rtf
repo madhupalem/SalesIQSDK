@@ -1,0 +1,38 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf400
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red196\green26\blue22;\red0\green116\blue0;
+\red28\green0\blue207;}
+{\*\expandedcolortbl;;\csgenericrgb\c0\c0\c0;\csgenericrgb\c77000\c10200\c8600;\csgenericrgb\c0\c45600\c0;
+\csgenericrgb\c11000\c0\c81000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab692
+\pard\tx692\pardeftab692\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf2 \CocoaLigature0 APP_PATH=\cf3 "$\{TARGET_BUILD_DIR\}/$\{WRAPPER_NAME\}"\cf2 \
+\
+\cf4 # This script loops through the frameworks embedded in the application and\cf2 \
+\cf4 # removes unused architectures.\cf2 \
+find \cf3 "$APP_PATH"\cf2  -name \cf5 '*.framework'\cf2  -type d | while read -r FRAMEWORK\
+do\
+FRAMEWORK_EXECUTABLE_NAME=$(defaults read \cf3 "$FRAMEWORK/Info.plist"\cf2  CFBundleExecutable)\
+FRAMEWORK_EXECUTABLE_PATH=\cf3 "$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME"\cf2 \
+echo \cf3 "Executable is $FRAMEWORK_EXECUTABLE_PATH"\cf2 \
+\
+EXTRACTED_ARCHS=()\
+if [[ $FRAMEWORK_EXECUTABLE_NAME = *\cf3 "Mobilisten"\cf2 * ]]; then\
+for ARCH in $ARCHS\
+do\
+echo \cf3 "Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME"\cf2 \
+lipo -extract \cf3 "$ARCH"\cf2  \cf3 "$FRAMEWORK_EXECUTABLE_PATH"\cf2  -o \cf3 "$FRAMEWORK_EXECUTABLE_PATH-$ARCH"\cf2 \
+EXTRACTED_ARCHS+=(\cf3 "$FRAMEWORK_EXECUTABLE_PATH-$ARCH"\cf2 )\
+done\
+\
+echo \cf3 "Merging extracted architectures: $\{ARCHS\}"\cf2 \
+lipo -o \cf3 "$FRAMEWORK_EXECUTABLE_PATH-merged"\cf2  -create \cf3 "$\{EXTRACTED_ARCHS[@]\}"\cf2 \
+rm \cf3 "$\{EXTRACTED_ARCHS[@]\}"\cf2 \
+\
+echo \cf3 "Replacing original executable with thinned version"\cf2 \
+rm \cf3 "$FRAMEWORK_EXECUTABLE_PATH"\cf2 \
+mv \cf3 "$FRAMEWORK_EXECUTABLE_PATH-merged"\cf2  \cf3 "$FRAMEWORK_EXECUTABLE_PATH"\cf2 \
+fi\
+done}

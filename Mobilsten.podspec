@@ -63,9 +63,9 @@ s.author           = { "Zoho Desk mobile" => "desk-mobile@zohocorp.com" }
 s.source           = { :git => "https://github.com/madhupalem/SalesIQSDK.git", :tag => s.version }
 s.platform         = :ios, '9.0'
 s.requires_arc     = true
-s.source_files     = "**/*.{swift,h,m}"
-s.public_header_files = "**/*.h"
-s.preserve_paths   = "Mobilsten.framework"
+s.source_files     = "Mobilisten/**/*.{swift,h,m}"
+s.public_header_files = "Mobilisten/**/*.h"
+s.preserve_paths   = "Mobilisten/Mobilsten.framework"
 s.vendored_frameworks = "Mobilsten.framework"
 s.frameworks       = 'UIKit','Foundation','SystemConfiguration'
 
