@@ -36,7 +36,7 @@ end
 
 Pod::Spec.new do |s|
 s.name             = "Mobilsten"
-s.version          = "1.0.1"
+s.version          = "1.0.2"
 s.summary          = "A framework for view KB and Submit ticket module for iOS app"
 s.license          = { :type => "MIT", :text=> <<-LICENSE
 MIT License
@@ -65,8 +65,6 @@ s.platform         = :ios, '9.0'
 s.requires_arc     = true
 s.source_files     = "Mobilisten/**/*.{swift,h,m}"
 s.public_header_files = "Mobilisten/**/*.h"
-s.preserve_paths   = "Mobilisten/Mobilsten.framework"
-s.vendored_frameworks = "Mobilsten.framework"
 s.frameworks       = 'UIKit','Foundation','SystemConfiguration'
 
 end
